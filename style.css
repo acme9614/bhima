@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* main-slider  */
+.carousel-container {
+  width: 95%;
+  margin: auto;
+}
+/* Arrow icon styling (pseudo-element) */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: bold;
+  color: black;
+}
+
+/* Bhima my choice  */
+#bhima-my-choice {
+  font-family: "Lora", serif;
+}
+
+.btn-underline {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.btn-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+}
+
+/* gifting-section  */
+
+#gifting-section {
+  font-family: "quiche-sans", sans-serif;
+}
+
+/* scheme-section  */
+
+#scheme-section {
+  font-family: "Quicksand", sans-serif;
+}
+.gold-border {
+  background: linear-gradient(to right, #d6a84f, #906731);
+}
+
+
+/* footer  */
+
+  #footer {
+        font-family: 'Quiche Sans', sans-serif;
+  }

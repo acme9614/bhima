@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bhima Trivandrum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SwiperJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- ✅ Google Font: Quiche Sans -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quiche+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- header  -->
+    <div class="relative">
+      <!-- Drawer -->
+      <div
+        id="drawer"
+        class="fixed top-0 left-0 h-full w-1/2 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300"
+      >
+        <div class="flex items-center justify-between p-4 border-b">
+          <h2 class="text-lg font-bold">Menu</h2>
+          <button onclick="closeDrawer()" class="text-xl">✖</button>
+        </div>
+        <ul class="p-4 space-y-3">
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToScheme()"
+              >Scheme</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToBankDetails()"
+              >Bank</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToKyc()"
+              >KYC</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToRate()"
+              >Rate</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateSchemeRecords()"
+              >Records</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToCustomerCard()"
+              >Card</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateTransactionHistory()"
+              >History</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToMyOrder()"
+              >Order</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToUserProfile()"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToDigitalGold()"
+              >Gold</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToPanchang()"
+              >Panchang</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToSetting()"
+              >Settings</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Overlay -->
+      <div
+        id="overlay"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+        onclick="closeDrawer()"
+      ></div>
+
+      <!-- Header -->
+      <div class="bg-white w-full relative">
+        <div class="max-w-screen-xl mx-auto px-4 relative">
+          <div class="h-20 flex items-center justify-start relative">
+            <!-- Left: Menu Icon -->
+            <div class="z-50">
+              <button
+                id="menuButton"
+                onclick="openDrawer()"
+                class="text-3xl text-gray-800 focus:outline-none"
+              >
+                ☰
+              </button>
+            </div>
+
+            <!-- Center: Logo -->
+            <div
+              class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <a href="#" class="flex items-center space-x-2">
+                <img
+                  src="https://www.bhimagold.com/images/bhima_logo3.png"
+                  alt="Logo"
+                  width="128"
+                  height="38"
+                  class="object-contain"
+                />
+                <img
+                  src="https://www.bhimagold.com/images/bhima_stamp2.png"
+                  alt="Bhima Stamp"
+                  width="53"
+                  height="38"
+                  class="object-contain"
+                />
+                <img
+                  src="https://www.bhimagold.com/images/bhima_boy5.png"
+                  alt="Bhima Boy"
+                  width="53"
+                  height="53"
+                  class="object-contain"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- main slider  -->
+    <div class="relative carousel-container" id="hero">
+      <div class="swiper mainSlider w-full h-[250px] md:h-[300px] lg:h-[500px]">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div
+            class="swiper-slide w-full h-full flex items-center justify-center"
+          >
+            <img
+              src="assets/img_1.jpg"
+              alt="Slide 1"
+              class="w-full h-full object-fill"
+            />
+          </div>
+
+          <!-- Slide 2 -->
+          <div
+            class="swiper-slide w-full h-full flex items-center justify-center"
+          >
+            <img
+              src="assets/img_2.jpg"
+              alt="Slide 2"
+              class="w-full h-full object-fill"
+            />
+          </div>
+
+          <!-- Slide 3 -->
+          <div
+            class="swiper-slide w-full h-full flex items-center justify-center"
+          >
+            <img
+              src="assets/img_3.jpeg"
+              alt="Slide 3"
+              class="w-full h-full object-fill"
+            />
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <div class="swiper-button-next text-black bg-[#CFDFCF] px-3 py-2"></div>
+        <div class="swiper-button-prev text-black bg-[#CFDFCF] px-2 py-2"></div>
+      </div>
+    </div>
+
+    <!--Drawers tabs into webpage-->
+    <div
+      class="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 gap-4 max-w-5xl mx-auto py-10"
+    >
+      <!-- Card Template -->
+      <div
+        onclick="navigateToScheme()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/2011/2011681.png"
+          alt="Scheme"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Scheme</span>
+      </div>
+
+      <div
+        onclick="navigateToBankDetails()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/2830/2830284.png"
+          alt="Bank"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Bank</span>
+      </div>
+
+      <div
+        onclick="navigateToKyc()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1029/1029183.png"
+          alt="KYC"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">KYC</span>
+      </div>
+
+      <div
+        onclick="navigateToRate()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png"
+          alt="Rate"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Rate</span>
+      </div>
+
+      <div
+        onclick="navigateSchemeRecords()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png"
+          alt="Records"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Records</span>
+      </div>
+
+      <div
+        onclick="navigateToCustomerCard()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.freepik.com/256/7039/7039290.png?semt=ais_incoming"
+          alt="Card"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Card</span>
+      </div>
+
+      <div
+        onclick="navigateTransactionHistory()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/5582/5582302.png"
+          alt="History"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">History</span>
+      </div>
+
+      <div
+        onclick="navigateToMyOrder()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png"
+          alt="Order"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Order</span>
+      </div>
+
+      <div
+        onclick="navigateToUserProfile()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/1144/1144760.png"
+          alt="Profile"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Profile</span>
+      </div>
+
+      <div
+        onclick="navigateToDigitalGold()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/6466/6466968.png"
+          alt="Gold"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Gold</span>
+      </div>
+
+      <div
+        onclick="navigateToPanchang()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5nxXm01c9zYscQwF15oOENVJr1Hwclr_VEg&s"
+          alt="Panchang"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Panchang</span>
+      </div>
+
+      <div
+        onclick="navigateToSetting()"
+        class="bg-white p-4 rounded-2xl shadow hover:shadow-lg flex flex-col items-center transition duration-300 hover:bg-yellow-50 cursor-pointer"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3524/3524634.png"
+          alt="Settings"
+          class="w-12 h-12 mb-2"
+        />
+        <span class="font-semibold text-sm text-center">Settings</span>
+      </div>
+    </div>
+
+    <!-- Collections Section -->
+    <div class="max-w-7xl mx-auto px-4 lg:py-10">
+      <div
+        class="flex flex-col lg:flex-row items-center justify-between gap-10"
+      >
+        <!-- Left: Text and Button -->
+        <div class="flex-1 text-center lg:text-left">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-quiche-sans mb-4">
+            Choose what fits your style from our exquisite collections
+          </h2>
+          <p
+            class="text-gray-600 mb-6 text-lg md:text-xl lg:text-xl max-w-md mx-auto lg:mx-0"
+          >
+            Blending tradition with modernity. We set the standard for the
+            ultimate in Diamond Jewellery.
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 text-xl sm:text-lg font-medium text-black hover:opacity-80 transition-all border-b-2 border-[#c4a95f]"
+          >
+            View Collections
+          </a>
+        </div>
+
+        <!-- Right: Layered Images -->
+        <div
+          class="flex-1 relative w-full max-w-md min-h-[450px] sm:min-h-[500px] mx-auto"
+        >
+          <!-- Main Center Image -->
+          <img
+            src="https://images.bhimagold.com/admin/images/e47b9dd0-60ad-11ef-8ff9-cbbb8a3d925b.webp"
+            alt="Main Model"
+            class="absolute top-0 left-1/2 transform -translate-x-1/2 z-10 w-[250px] sm:w-[300px] lg:w-[340px]"
+          />
+
+          <!-- Bottom Left Image -->
+          <img
+            src="https://images.bhimagold.com/admin/images/e8921070-60ad-11ef-86ea-2502bb3857d0.webp"
+            alt="Bottom Left"
+            class="absolute bottom-8 md:-bottom-0 lg:-bottom-16 sm:-left-10 lg:-left-28 z-20 w-[160px] sm:w-[240px] lg:w-[300px]"
+          />
+
+          <!-- Bottom Right Image -->
+          <img
+            src="https://images.bhimagold.com/admin/widget/images/1740639131467-fae030e0-60ad-11ef-9b87-b331624af22c.jpg"
+            alt="Bottom Right"
+            class="absolute bottom-36 md:bottom-32 lg:bottom-16 right-0 lg:-right-12 z-20 w-[120px] sm:w-[140px] lg:w-[160px]"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Gifting section  -->
+    <section class="max-w-7xl mx-auto px-4 lg:py-10" id="gifting-section">
+      <!-- Heading -->
+      <div class="text-center md:text-start my-6">
+        <h2 class="text-3xl sm:text-4xl quiche-sans">Effortless Gifting</h2>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <a
+          href="#"
+          class="group block border rounded-md overflow-hidden shadow hover:shadow-lg transition"
+        >
+          <div class="relative">
+            <img
+              src="https://images.bhimagold.com/admin/images/480fb660-60ae-11ef-a987-d508ab43a588.webp?w=512&q=75"
+              alt="Under 15K"
+              class="w-full h-[400px] object-cover"
+            />
+          </div>
+          <div class="p-4">
+            <div class="flex items-center justify-between mb-2">
+              <p class="quiche-sans text-lg">Under 15K</p>
+            </div>
+            <p class="text-md">Spark joy with every sparkle</p>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a
+          href="#"
+          class="group block border rounded-md overflow-hidden shadow hover:shadow-lg transition"
+        >
+          <div class="relative">
+            <img
+              src="https://images.bhimagold.com/admin/images/4dc46fb0-60ae-11ef-86ea-2502bb3857d0.webp?w=512&q=75"
+              alt="Under 50K"
+              class="w-full h-[400px] object-cover"
+            />
+          </div>
+          <div class="p-4">
+            <div class="flex items-center justify-between mb-2">
+              <p class="quiche-sans text-lg">Under 50K</p>
+            </div>
+            <p class="text-md">Gifts that spark a million memories</p>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a
+          href="#"
+          class="group block border rounded-md overflow-hidden shadow hover:shadow-lg transition"
+        >
+          <div class="relative">
+            <img
+              src="https://images.bhimagold.com/admin/images/536c7ed0-60ae-11ef-a987-d508ab43a588.webp?w=512&q=75"
+              alt="Under 70K"
+              class="w-full h-[400px] object-cover"
+            />
+          </div>
+          <div class="p-4">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-quiche-sans text-lg">Under 70K</p>
+            </div>
+            <p class="text-md">Mark your moments, with a timeless piece</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Bhima my choice  -->
+    <div
+      class="relative max-w-7xl mx-auto px-4 py-10 lg:pt-36"
+      id="bhima-my-choice"
+    >
+      <!-- Gold Box Content -->
+      <div
+        class="relative bg-[#b38842] px-6 lg:px-10 rounded-md flex flex-col lg:flex-row items-center lg:items-center text-center lg:text-left min-h-[400px]"
+      >
+        <!-- Left: Text -->
+        <div
+          class="w-full lg:w-1/2 text-white z-10 py-8 flex flex-col items-center lg:items-start"
+        >
+          <h2 class="text-3xl sm:text-6xl font-semibold mb-4">
+            Bhima My Choice
+          </h2>
+          <p class="text-base sm:text-2xl mb-6">
+            Join our EMA Jewellery Purchase Plan and avail exciting benefits
+          </p>
+          <a href="#" class="btn-underline text-xl">Explore</a>
+        </div>
+
+        <!-- Right: Placeholder for spacing on desktop -->
+        <div class="hidden lg:block lg:w-1/2 h-[400px]"></div>
+
+        <!-- Image: Visible on all views -->
+        <div class="block lg:hidden mt-4 flex justify-center z-20">
+          <img
+            src="https://images.bhimagold.com/admin/images/13a6b350-60af-11ef-9b87-b331624af22c.webp?w=512&q=75"
+            alt="Bhima My Choice"
+            class="w-[80%] max-w-[300px] object-contain"
+          />
+        </div>
+
+        <!-- Overlapping Image for desktop only -->
+        <div class="hidden lg:block absolute -right-20 bottom-0 z-20">
+          <img
+            src="https://images.bhimagold.com/admin/images/13a6b350-60af-11ef-9b87-b331624af22c.webp?w=512&q=75"
+            alt="Bhima My Choice"
+            class="w-[480px] h-auto object-contain"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- about store  -->
+    <div class="px-4 md:px-16 bg-gray-50" id="about-us">
+      <div
+        class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10"
+      >
+        <!-- Images (Now on Left) -->
+        <div
+          class="flex justify-center lg:justify-center relative order-1 lg:order-none"
+        >
+          <img
+            src="https://www.bhimagold.com/images/aboutBanner.jpg"
+            alt="Store Image 1"
+            class="w-[400px] md:w-[500px] lg:w-[700px] h-[400px] object-fit lg:mx-2"
+          />
+
+          <!-- Overlapping Image -->
+          <!-- <img
+            src="https://images.bhimagold.com/admin/images/b7a16000-e9cc-11ed-abab-cd90a28385b7.webp?w=256&amp;q=75"
+            alt="Store Image 2"
+            class="absolute bottom-1/3 -left-24 md:-left-32 lg:-left-12 transform translate-x-1/4 translate-y-1/4 w-32 md:w-36 lg:w-40 h-auto object-cover"
+          /> -->
+        </div>
+
+        <!-- Text Content (Now on Right) -->
+        <div class="flex-1 space-y-4 text-center lg:text-left">
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-quiche-sans text-gray-900"
+          >
+            Visit Bhima Stores
+          </h2>
+          <p class="text-lg md:text-xl lg:text-xl text-gray-600 px-4 md:px-0">
+            Bhima's hospitality is an experience to live. Come and try
+            magnificent jewellery and live this grandeur experience in a Bhima
+            store near you.
+          </p>
+          <a href="#" class="inline-block">
+            <button
+              type="button"
+              class="flex items-center gap-2 bg-gradient-to-b from-[#A07A48] to-[#906731] text-white px-6 py-2 transition duration-300"
+            >
+              <span class="text-lg">Visit Us</span>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bhima Jewellers – We tell your story -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <!-- Title -->
+        <div class="mb-6">
+          <h2
+            class="text-3xl sm:text-4xl font-quiche-sans text-center sm:text-left"
+          >
+            Bhima Jewellers – We tell your story
+          </h2>
+        </div>
+
+        <!-- Content Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-1 gap-4">
+          <div class="text-base sm:text-lg leading-relaxed space-y-4">
+            <p>
+              Each piece of jewellery you acquire tells your unique story – be
+              it a celebration of special occasions like your engagement,
+              wedding, anniversary, birthday, or significant milestones. Or
+              simply that you want to indulge yourself because you are worth
+              celebrating. Whatever your reason, our jewellery is here to share
+              your story and meaningful moments with the world. And we have been
+              doing so since 1925!
+            </p>
+            <p>
+              Our collection of unique, thoughtfully designed and expertly
+              crafted jewellery will bring your story to life reflecting your
+              uniqueness and personality. With an unwavering commitment to
+              excellence, we continually evolve with ever-changing trends, while
+              always upholding our legacy of <strong>purity</strong> and
+              exceptional <strong>craftsmanship</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- scheme section  -->
+
+    <section class="max-w-7xl mx-auto px-4 py-10 lg:py-16" id="scheme-section">
+      <h2
+        class="text-3xl md:text-4xl lg:text-5xl font-quiche-sans text-center lg:text-start mb-12"
+      >
+        Jewellery Purchase Schemes
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div
+          class="relative group rounded-2xl overflow-hidden shadow-xl transition-transform hover:-translate-y-2 duration-300"
+        >
+          <div class="gold-border p-[2px] rounded-2xl">
+            <div class="bg-white rounded-2xl p-6 text-center h-full">
+              <div class="mb-4">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                  class="w-12 h-12 mx-auto"
+                  alt="gold saving icon"
+                />
+              </div>
+              <h3 class="text-xl font-semibold text-[#906731] mb-2">
+                Gold Saving Plan
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Invest monthly and get a bonus at maturity. Ideal for long-term
+                jewellery buyers.
+              </p>
+              <a href="#" class="text-[#906731] font-semibold hover:underline"
+                >Know More →</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="relative group rounded-2xl overflow-hidden shadow-xl transition-transform hover:-translate-y-2 duration-300"
+        >
+          <div class="gold-border p-[2px] rounded-2xl">
+            <div class="bg-white rounded-2xl p-6 text-center h-full">
+              <div class="mb-4">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/3039/3039394.png"
+                  class="w-12 h-12 mx-auto"
+                  alt="EMI icon"
+                />
+              </div>
+              <h3 class="text-xl font-semibold text-[#906731] mb-2">
+                EMI Jewellery
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Buy now and pay later with zero interest EMI options across our
+                jewellery collection.
+              </p>
+              <a href="#" class="text-[#906731] font-semibold hover:underline"
+                >Explore EMI →</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="relative group rounded-2xl overflow-hidden shadow-xl transition-transform hover:-translate-y-2 duration-300"
+        >
+          <div class="gold-border p-[2px] rounded-2xl">
+            <div class="bg-white rounded-2xl p-6 text-center h-full">
+              <div class="mb-4">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png"
+                  class="w-12 h-12 mx-auto"
+                  alt="festival plan icon"
+                />
+              </div>
+              <h3 class="text-xl font-semibold text-[#906731] mb-2">
+                Festive Offers
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Enjoy exclusive schemes and bonuses during festive seasons.
+                Limited-time deals!
+              </p>
+              <a href="#" class="text-[#906731] font-semibold hover:underline"
+                >View Offers →</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- gift-cards  -->
+    <section class="px-4 py-0 lg:py-6 max-w-7xl mx-auto" id="gift-cards">
+      <!-- Combined Header and Card Balance -->
+      <div
+        class="flex flex-col lg:flex-row justify-between items-start gap-10 mb-12"
+      >
+        <!-- Header and Description -->
+        <div class="lg:w-1/2 order-2 lg:order-1">
+          <h1
+            class="text-3xl md:text-4xl lg:text-5xl font-quiche-sans text-center lg:text-start mb-4"
+          >
+            Gift Cards
+          </h1>
+          <p class="text-gray-700 text-lg text-center lg:text-start">
+            Celebrate every occasion with your loved ones in a special way.
+            Provide the gift of choice to your recipient with email gift cards
+            and physical gift cards from Bhima.
+          </p>
+        </div>
+
+        <!-- Card image -->
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center w-full lg:max-w-md order-1 lg:order-2"
+        >
+          <img
+            src="https://www.bhimagold.com/images/card.svg"
+            alt="Card"
+            class="w-36 h-36"
+          />
+        </div>
+      </div>
+
+      <!-- Gift Card Options -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <!-- Physical Gift Card -->
+        <a
+          href="#"
+          class="block shadow-lg rounded overflow-hidden hover:shadow-xl transition"
+        >
+          <img
+            src="https://images.bhimagold.com/admin/images/0806b7a0-6f66-11ef-9fb7-af58f624f613.jpg?w=512&q=75"
+            alt="Physical Gift Card"
+            class="w-full object-cover"
+          />
+          <div class="bg-white p-4 text-center">
+            <p class="text-lg font-semibold">Physical Gift Card</p>
+          </div>
+        </a>
+
+        <!-- eGift Card -->
+        <a
+          href="#"
+          class="block shadow-lg rounded overflow-hidden hover:shadow-xl transition"
+        >
+          <img
+            src="https://images.bhimagold.com/admin/images/ff8dfc50-6f65-11ef-9fb7-af58f624f613.jpg?w=512&q=75"
+            alt="eGift Card"
+            class="w-full object-cover"
+          />
+          <div class="bg-white p-4 text-center">
+            <p class="text-lg font-semibold">eGift Card</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- footer  -->
+    <footer class="max-w-7xl mx-auto px-8 md:py-6" id="footer">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+        <!-- About Us -->
+        <div>
+          <h3 class="font-quiche-sans mb-3 text-lg">About Us</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-[#8B5E3C]">Our Legacy</a></li>
+            <li><a href="#" class="hover:text-[#8B5E3C]">Our Stores</a></li>
+            <li><a href="#" class="hover:text-[#8B5E3C]">CSR Activities</a></li>
+            <li><a href="#" class="hover:text-[#8B5E3C]">Blogs</a></li>
+          </ul>
+        </div>
+
+        <!-- Policies -->
+        <div>
+          <h3 class="font-quiche-sans mb-3 text-lg">Policies</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="hover:text-[#8B5E3C]">Returns & Refunds</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-[#8B5E3C]">Terms & Conditions</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-[#8B5E3C]">Shipping Policy</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-[#8B5E3C]">Cancellation Policy</a>
+            </li>
+            <li><a href="#" class="hover:text-[#8B5E3C]">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Useful Links -->
+        <div>
+          <h3 class="font-quiche-sans mb-3 text-lg">Useful Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-[#8B5E3C]">FAQs</a></li>
+            <li>
+              <a href="#" class="hover:text-[#8B5E3C]"
+                >Kahani - Bridal Stories</a
+              >
+            </li>
+            <li><a href="#" class="hover:text-[#8B5E3C]">Golden Key</a></li>
+            <li>
+              <a href="#" class="hover:text-[#8B5E3C]">Size Guide for Rings</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-[#8B5E3C]"
+                >Size Guide for Bangles</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="font-quiche-sans mb-3 text-lg">Contact Us</h3>
+          <p class="mb-2 font-quiche-sans text-xl">
+            Bhima Gold Private Limited
+          </p>
+          <p class="mb-2 text-gray-600 text-sm">
+            (Formerly known as BHIMA JEWELLERS),<br />
+            Bhima House, #423, 4th Block, 8th Main,<br />
+            Koramangala, Bengaluru, Karnataka, India, 560034
+          </p>
+          <p class="flex items-center gap-2 text-sm mb-1">
+            <span>📞</span>
+            <span class="font-medium"
+              >1800-121-9076 (Toll Free) 10AM–7PM IST</span
+            >
+          </p>
+          <p class="flex items-center gap-2 text-sm">
+            <span>✉️</span>
+            <a href="mailto:support@bhimagold.com" class="hover:text-[#8B5E3C]"
+              >support@bhimagold.com</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- back to-top btn  -->
+    <button
+      id="scrollTopBtn"
+      class="fixed bottom-6 right-6 z-50 w-10 h-10 bg-[#956D38] text-white text-xl rounded-full shadow-lg hover:scale-110 hover:shadow-2xl transition-all duration-300 ease-in-out opacity-0 pointer-events-none flex items-center justify-center"
+    >
+      ⬆
+    </button>
+
+    <!-- SwiperJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
