@@ -12,71 +12,70 @@ function closeDrawer() {
 
 // drawers menu
 function navigateToScheme() {
-    Toaster.postMessage('navigateScheme');
-  }
-  
-  function navigateToBankDetails() {
-    Toaster.postMessage('navigateBankDetails');
-  }
-  
-  function navigateToKyc() {
-    Toaster.postMessage('navigateKyc');
-  }
-  
-  function navigateToRate() {
-    Toaster.postMessage('navigateRate');
-  }
-  
-  function navigateSchemeRecords() {
-    Toaster.postMessage('navigateSchemeRecords');
-  }
-  
-  function navigateToCustomerCard() {
-    Toaster.postMessage('navigateCustomerCard');
-  }
+  Toaster.postMessage("navigateScheme");
+}
 
-  function navigateTransactionHistory() {
-    Toaster.postMessage('navigateTransactionHistory');
-  }
+function navigateToBankDetails() {
+  Toaster.postMessage("navigateBankDetails");
+}
 
-  function navigateToMyOrder() {
-    Toaster.postMessage('navigateToMyOrder');
-  }
+function navigateToKyc() {
+  Toaster.postMessage("navigateKyc");
+}
 
-  function navigateToUserProfile() {
-    Toaster.postMessage('navigateToUserProfile');
-  }
+function navigateToRate() {
+  Toaster.postMessage("navigateRate");
+}
 
-  function navigateToDigitalGold() {
-    Toaster.postMessage('navigateToDigitalGold');
-  }
+function navigateSchemeRecords() {
+  Toaster.postMessage("navigateSchemeRecords");
+}
 
-  function navigateToPanchang() {
-    Toaster.postMessage('navigateToPanchang');
-  }
+function navigateToCustomerCard() {
+  Toaster.postMessage("navigateCustomerCard");
+}
 
-  function navigateToFeedback() {
-    Toaster.postMessage('navigateToFeedback');
-  }
+function navigateTransactionHistory() {
+  Toaster.postMessage("navigateTransactionHistory");
+}
 
-  function navigateToSetting() {
-    Toaster.postMessage('navigateToSetting');
-  }
+function navigateToMyOrder() {
+  Toaster.postMessage("navigateToMyOrder");
+}
 
-  function setUserName(username) {
-    // Find the element by ID and set the text content
-    document.getElementById("user-name-display").innerText = "Welcome, " + username;
+function navigateToUserProfile() {
+  Toaster.postMessage("navigateToUserProfile");
+}
+
+function navigateToDigitalGold() {
+  Toaster.postMessage("navigateToDigitalGold");
+}
+
+function navigateToPanchang() {
+  Toaster.postMessage("navigateToPanchang");
+}
+
+function navigateToFeedback() {
+  Toaster.postMessage("navigateToFeedback");
+}
+
+function navigateToSetting() {
+  Toaster.postMessage("navigateToSetting");
+}
+
+function setUserName(username) {
+  // Find the element by ID and set the text content
+  document.getElementById("user-name-display").innerText =
+    "Welcome, " + username;
 }
 function navigateToHomePage() {
-    Toaster.postMessage('navigateToHomePage');
+  Toaster.postMessage("navigateToHomePage");
 }
-
-
 
 // mainSlider
 
 const swiper = new Swiper(".mainSlider", {
-    autoplay: {
+  autoplay: {
     delay: 3000, // Time between slides (in milliseconds)
     disableOnInteraction: false, // Keep autoplay running after user interaction
   },
@@ -88,23 +87,41 @@ const swiper = new Swiper(".mainSlider", {
   pagination: false,
 });
 
+// services
+
+let expanded = false;
+function toggleBoxes() {
+  const container = document.getElementById("boxContainer");
+  const arrow = document.getElementById("arrowIcon");
+
+  if (!expanded) {
+    container.classList.remove("max-h-[8.5rem]");
+    arrow.classList.add("rotate-180");
+    expanded = true;
+  } else {
+    container.classList.add("max-h-[8.5rem]");
+    arrow.classList.remove("rotate-180");
+    expanded = false;
+  }
+}
+
 // scrollTopBtn
 
- const scrollTopBtn = document.getElementById("scrollTopBtn");
-    const heroSection = document.getElementById("hero");
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+const heroSection = document.getElementById("hero");
 
-    window.addEventListener("scroll", () => {
-      const heroBottom = heroSection.getBoundingClientRect().bottom;
+window.addEventListener("scroll", () => {
+  const heroBottom = heroSection.getBoundingClientRect().bottom;
 
-      if (heroBottom < 0) {
-        scrollTopBtn.classList.remove("opacity-0", "pointer-events-none");
-        scrollTopBtn.classList.add("opacity-100", "pointer-events-auto");
-      } else {
-        scrollTopBtn.classList.add("opacity-0", "pointer-events-none");
-        scrollTopBtn.classList.remove("opacity-100", "pointer-events-auto");
-      }
-    });
+  if (heroBottom < 0) {
+    scrollTopBtn.classList.remove("opacity-0", "pointer-events-none");
+    scrollTopBtn.classList.add("opacity-100", "pointer-events-auto");
+  } else {
+    scrollTopBtn.classList.add("opacity-0", "pointer-events-none");
+    scrollTopBtn.classList.remove("opacity-100", "pointer-events-auto");
+  }
+});
 
-    scrollTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+scrollTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
