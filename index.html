@@ -24,7 +24,7 @@
       <!-- Drawer -->
       <div
         id="drawer"
-        class="fixed top-0 left-0 h-full w-1/2 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300"
+        class="fixed top-0 left-0 h-full w-1/2 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 overflow-y-auto"
       >
         <div class="flex items-center justify-between p-4 border-b">
           <h2 class="text-lg font-bold">Menu</h2>
@@ -37,6 +37,22 @@
               class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
               onclick="navigateToScheme()"
               >Scheme</a
+            >
+          </li>
+           <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToCatalogues()"
+              >Catalogues</a
+            >
+          </li>
+           <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToQuickPurchase()"
+              >Quick Purchase</a
             >
           </li>
           <li>
@@ -378,12 +394,14 @@
         <span class="font-semibold text-sm text-center">Settings</span>
       </div>
     </div>
+
+
 <!-- services  -->
 <div class="flex flex-col items-center justify-center p-6">
   <!-- Grid Container -->
   <div
     id="boxContainer"
-    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-3 lg:gap-6 overflow-hidden max-h-[8.5rem] sm:max-h-none"
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-7 gap-6 md:gap-3 lg:gap-6 overflow-hidden max-h-[8.5rem] sm:max-h-none"
   >
     <!-- Box 1 -->
     <div
@@ -395,6 +413,28 @@
         src="https://cdn-icons-png.flaticon.com/128/10150/10150740.png"
       />
       <span class="text-sm text-black font-semibold mt-2">Scheme</span>
+    </div>
+
+     <div
+      onclick="navigateToCatalogues()"
+      class="w-28 h-28 rounded-tr-[50px] rounded-bl-[50px] bg-[#D3A65E] flex flex-col items-center justify-center text-center shadow-md text-white hover:bg-[#B38842] cursor-pointer"
+    >
+      <img
+        class="w-10 h-10"
+        src="https://cdn-icons-png.flaticon.com/128/29/29341.png"
+      />
+      <span class="text-sm text-black font-semibold mt-2">Catalogues</span>
+    </div>
+
+     <div
+      onclick="navigateToQuickPurchase()"
+      class="w-28 h-28 rounded-tr-[50px] rounded-bl-[50px] bg-[#D3A65E] flex flex-col items-center justify-center text-center shadow-md text-white hover:bg-[#B38842] cursor-pointer"
+    >
+      <img
+        class="w-10 h-10"
+        src="https://cdn-icons-png.flaticon.com/128/1019/1019709.png"
+      />
+      <span class="text-sm text-black font-semibold mt-2">Quick Purchase</span>
     </div>
 
     <!-- Box 2 -->
