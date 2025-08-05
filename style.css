@@ -4,9 +4,13 @@ html {
   scroll-behavior: smooth;
 }
 
+   #about {
+        font-family: "Raleway", sans-serif;
+      }
+
 /* main-slider  */
 .carousel-container {
-  width: 95%;
+  width: 100%;
   margin: auto;
 }
 /* Arrow icon styling (pseudo-element) */
@@ -17,32 +21,42 @@ html {
   color: black;
 }
 
-/* Bhima my choice  */
-#bhima-my-choice {
-  font-family: "Lora", serif;
+/* pagination  */
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #888;
 }
 
-.btn-underline {
-  position: relative;
-  display: inline-block;
-  font-weight: bold;
+.swiper-pagination-bullet-active {
+  background: #eeaa5e; /* your theme color */
 }
 
-.btn-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  height: 2px;
-  width: 100%;
-  background-color: white;
+/* about  */
+.active-tab {
+  color: #d3a65e;
+  font-weight: 600;
+  border-bottom: 4px solid #d3a65e;
+  padding-bottom: 4px;
 }
 
-/* gifting-section  */
-
-#gifting-section {
-  font-family: "quiche-sans", sans-serif;
+.fade-in-up {
+  animation: fadeInUp 0.8s ease;
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 
 /* scheme-section  */
 
@@ -53,9 +67,8 @@ html {
   background: linear-gradient(to right, #d6a84f, #906731);
 }
 
-
 /* footer  */
 
-  #footer {
-        font-family: 'Quiche Sans', sans-serif;
-  }
+#footer {
+  font-family: "Quiche Sans", sans-serif;
+}

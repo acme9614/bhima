@@ -85,15 +85,18 @@ function navigateToHomePage() {
 
 const swiper = new Swiper(".mainSlider", {
   autoplay: {
-    delay: 3000, // Time between slides (in milliseconds)
-    disableOnInteraction: false, // Keep autoplay running after user interaction
+    delay: 3000, 
+    disableOnInteraction: false, 
   },
   loop: true,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-  pagination: false,
+    pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
 });
 
 // services
@@ -104,15 +107,53 @@ function toggleBoxes() {
   const arrow = document.getElementById("arrowIcon");
 
   if (!expanded) {
-    container.classList.remove("max-h-[8.5rem]");
+    container.classList.remove("max-h-[15.5rem]");
     arrow.classList.add("rotate-180");
     expanded = true;
   } else {
-    container.classList.add("max-h-[8.5rem]");
+    container.classList.add("max-h-[15.5rem]");
     arrow.classList.remove("rotate-180");
     expanded = false;
   }
 }
+
+
+// about us 
+
+function showTab(tab) {
+  const companyBtn = document.getElementById("tab-company-btn");
+  const chairmanBtn = document.getElementById("tab-chairman-btn");
+  const companyContent = document.getElementById("tab-company");
+  const chairmanContent = document.getElementById("tab-chairman");
+
+  // Remove animation classes before switching
+  companyContent.classList.remove("fade-in-up");
+  chairmanContent.classList.remove("fade-in-up");
+
+  if (tab === "company") {
+    companyContent.classList.remove("hidden");
+    chairmanContent.classList.add("hidden");
+
+    companyContent.classList.add("fade-in-up");
+
+    companyBtn.classList.add("active-tab");
+    chairmanBtn.classList.remove("active-tab");
+  } else {
+    chairmanContent.classList.remove("hidden");
+    companyContent.classList.add("hidden");
+
+    chairmanContent.classList.add("fade-in-up");
+
+    chairmanBtn.classList.add("active-tab");
+    companyBtn.classList.remove("active-tab");
+  }
+
+  // Optional: Refresh AOS if you still want AOS on first scroll
+  setTimeout(() => {
+    AOS.refresh();
+  }, 50);
+}
+
 
 // scrollTopBtn
 
